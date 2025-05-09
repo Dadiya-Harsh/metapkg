@@ -6,6 +6,7 @@ authors = [{name = "Harsh Dadiya"}]
 license = {text = "MIT"}
 requires-python = ">=3.12"
 dependencies = [
+    "build>=1.2.2.post1",
     "click>=8.1.8",
     "markdown-it-py>=3.0.0",
     "mdurl>=0.1.2",
@@ -14,6 +15,7 @@ dependencies = [
     "shellingham>=1.5.4",
     "tomli>=2.2.1",
     "tomli-w>=1.2.0",
+    "twine>=6.1.0",
     "typer>=0.15.3",
     "typing-extensions>=4.13.2",
 ]
