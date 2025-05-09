@@ -2,10 +2,52 @@
 name = "metapkg"
 version = "0.1.0"
 description = "CLI tool to manage pyproject.toml and generate requirements.txt"
-readme = "README.md"
+authors = [{name = "Harsh Dadiya"}]
+license = {text = "MIT"}
 requires-python = ">=3.12"
 dependencies = [
-    "toml>=0.10.2",
+    "click>=8.1.8",
+    "markdown-it-py>=3.0.0",
+    "mdurl>=0.1.2",
+    "pygments>=2.19.1",
+    "rich>=14.0.0",
+    "shellingham>=1.5.4",
+    "tomli>=2.2.1",
     "tomli-w>=1.2.0",
     "typer>=0.15.3",
+    "typing-extensions>=4.13.2",
 ]
+readme = "README.md"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Build Tools",
+]
+urls = {Homepage = "https://github.com/Dadiya-Harsh/metapkg", Source = "https://github.com/Dadiya-Harsh/metapkg"}
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel>=0.38.0"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+metapkg = "metapkg.cli:app"
+
+[dependency-groups]
+dev = [
+    "click>=8.1.8",
+    "markdown-it-py>=3.0.0",
+    "mdurl>=0.1.2",
+    "pygments>=2.19.1",
+    "rich>=14.0.0",
+    "shellingham>=1.5.4",
+    "tomli>=2.2.1",
+    "tomli-w>=1.2.0",
+    "typer>=0.15.3",
+    "typing-extensions>=4.13.2",
+]
+
+[tool.uv.sources]
+metapkg = { workspace = true }
