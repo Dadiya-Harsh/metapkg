@@ -3,7 +3,7 @@ import subprocess
 import sys
 from typing import Dict, List, Set
 import typer
-from req_writer import get_installed_packages
+from metapkg.req_writer import get_installed_packages
 
 def install_missing_dependencies(toml_data: Dict) -> None:
     """
@@ -57,7 +57,7 @@ def integrate_with_cli(app):
         app: Typer app instance to register the command.
     """
     import typer
-    from toml_manager import read_pyproject_toml, add_dependency, write_pyproject_toml
+    from metapkg.toml_manager import read_pyproject_toml, add_dependency, write_pyproject_toml
 
     @app.command(name="sync")
     def sync(add_untracked: bool = typer.Option(False, "--add-untracked", help="Add untracked packages to pyproject.toml")):

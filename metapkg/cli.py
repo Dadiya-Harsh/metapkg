@@ -1,9 +1,9 @@
 # metapkg/cli.py
 import typer
-from req_writer import integrate_with_cli as integrate_reqs
-from toml_manager import integrate_with_cli as integrate_toml
-from import_scanner import integrate_with_cli as integrate_scan
-from utils import integrate_with_cli as integrate_sync
+from metapkg.req_writer import integrate_with_cli as integrate_reqs
+from metapkg.toml_manager import integrate_with_cli as integrate_toml
+from metapkg.import_scanner import integrate_with_cli as integrate_scan
+from metapkg.utils import integrate_with_cli as integrate_sync
 
 app = typer.Typer(
     name="metapkg",

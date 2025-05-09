@@ -103,7 +103,7 @@ def integrate_with_cli(app):
         app: Typer app instance to register the command.
     """
     import typer
-    from toml_manager import read_pyproject_toml, add_dependency, write_pyproject_toml
+    from metapkg.toml_manager import read_pyproject_toml, add_dependency, write_pyproject_toml
 
     @app.command(name="scan")
     def scan(directory: str = typer.Option(".", "--dir", "-d", help="Directory to scan")):
