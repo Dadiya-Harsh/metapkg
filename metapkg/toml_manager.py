@@ -10,15 +10,40 @@ import os
 
 def get_project_root() -> Path:
     """
-    Get the project root directory (where pyproject.toml is expected).
+    Get the project root directory (where pyproject.toml will be created).
     
     Returns:
         Path object pointing to the project root directory.
+    
+    Notes:
+        Tries to find the project root by looking for a parent directory 
+        that contains characteristics of a project root, such as:
+        - Contains a src/ directory
+        - Contains .git/ directory 
+        - Current working directory if no other indicators are found
     """
-    # Assuming the script is in metapkg/metapkg/, go up two levels to the root
-    current_file = Path(__file__).resolve()
-    project_root = current_file.parent.parent
-    return project_root
+    # Get the current working directory
+    current_dir = Path.cwd()
+    
+    # Start from the current directory and walk up the directory tree
+    for parent in [current_dir] + list(current_dir.parents):
+        # Check for typical project root indicators
+        if (parent / '.git').exists() or \
+           (parent / 'src').exists() or \
+           (parent / 'pyproject.toml').exists():
+            return parent
+    
+    # If no specific indicators found, use the current working directory
+    return current_dir
+
+# Rest of the code remains the same (previous implementation)
+import tomli
+import tomli_w
+from pathlib import Path
+from typing import Dict, List, Optional
+import typer
+import re
+import os
 
 def validate_version_specifier(version: str) -> str:
     """
